@@ -1,5 +1,6 @@
 package ar.com.flow.download
 
+import org.springframework.beans.factory.annotation.Value
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
@@ -10,10 +11,9 @@ import javax.servlet.http.HttpServletResponse
 
 @RestController
 @RequestMapping("/servlet/file")
-class ServletFileController {
-    // TODO extract to application.properties
-    val basePath = "/home/emenendez/Downloads"
-
+class ServletFileController(
+    @Value("\${local.source.path}") private val basePath: String
+) {
     val fileServer = FileServer.from(basePath)
 
     /**
