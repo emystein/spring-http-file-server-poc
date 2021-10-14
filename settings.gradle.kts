@@ -1,1 +1,1 @@
-rootProject.name = "file-download-poc"
+rootProject.name = "spring-http-file-server-poc"
