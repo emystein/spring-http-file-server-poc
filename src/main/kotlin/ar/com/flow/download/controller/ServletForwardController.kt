@@ -1,6 +1,6 @@
 package ar.com.flow.download.controller
 
-import ar.com.flow.download.FileServerProxy
+import ar.com.flow.download.RemoteFileServer
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.web.bind.annotation.GetMapping
@@ -16,7 +16,7 @@ class ServletForwardController(
 ) {
     private val log = LoggerFactory.getLogger(ServletFileController::class.java)
 
-    private val fileServer = FileServerProxy(remoteSourceUrl)
+    private val fileServer = RemoteFileServer(remoteSourceUrl)
 
     @GetMapping("/servlet-response/{fileName}")
     fun forwardToServletResponse(@PathVariable("fileName") fileName: String, response: HttpServletResponse) {
