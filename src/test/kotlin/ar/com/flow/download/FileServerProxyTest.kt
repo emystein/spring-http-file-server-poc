@@ -5,14 +5,14 @@ import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import org.springframework.mock.web.MockHttpServletResponse
 
-class RemoteFileServerTest {
+class FileServerProxyTest {
     private lateinit var mockRemoteServer: MockRemoteServer
-    private lateinit var fileServer: RemoteFileServer
+    private lateinit var proxy: FileServerProxy
 
     @BeforeEach
     fun setup() {
         mockRemoteServer = MockRemoteServer()
-        fileServer = RemoteFileServer(mockRemoteServer.rootUrl())
+        proxy = FileServerProxy(mockRemoteServer.rootUrl())
     }
 
     @Test
@@ -21,7 +21,7 @@ class RemoteFileServerTest {
 
         mockRemoteServer.enqueueContent(downloadedContent)
 
-        val fileToServe = fileServer.read("vtnet.log")
+        val fileToServe = proxy.read("vtnet.log")
         val response = MockHttpServletResponse()
         fileToServe.attachTo(response)
 
