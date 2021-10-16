@@ -1,6 +1,7 @@
 package ar.com.flow.download.controller
 
 import ar.com.flow.download.Memory
+import org.aspectj.lang.JoinPoint
 import org.aspectj.lang.annotation.After
 import org.aspectj.lang.annotation.Aspect
 import org.aspectj.lang.annotation.Before
@@ -22,16 +23,16 @@ class MemoryUsageLogger {
     }
 
     @Before("controllerPointcut()")
-    fun logMemoryUsedBeforeExecution() {
-        logMemoryUsed("before")
+    fun logMemoryUsedBeforeExecution(joinPoint: JoinPoint) {
+        logMemoryUsed("before", joinPoint.signature.name)
     }
 
     @After("controllerPointcut()")
-    fun logMemoryUsedAfterExecution() {
-        logMemoryUsed("after")
+    fun logMemoryUsedAfterExecution(joinPoint: JoinPoint) {
+        logMemoryUsed("after", joinPoint.signature.name)
     }
 
-    private fun logMemoryUsed(relativeTime: String) {
-        log.trace("JVM used memory $relativeTime execute action: ${Memory.usedInMB()} MB")
+    private fun logMemoryUsed(relativeTime: String, action: String) {
+        log.trace("JVM used memory $relativeTime $action: ${Memory.usedInMB()} MB")
     }
 }
