@@ -12,11 +12,11 @@ import javax.servlet.http.HttpServletResponse
 @RestController
 @RequestMapping("/servlet/proxy")
 class ServletProxyController(
-    @Value("\${remote.source.url}") private val remoteSourceUrl: String
+    @Value("\${remote.source.url}") private val remoteUrl: String
 ) {
-    private val log = LoggerFactory.getLogger(ServletFileController::class.java)
+    private val log = LoggerFactory.getLogger(this.javaClass)
 
-    private val fileServer = FileServerProxy(remoteSourceUrl)
+    private val fileServer = FileServerProxy(remoteUrl)
 
     @GetMapping("/servlet-response/{fileName}")
     fun writeToServletResponse(@PathVariable("fileName") fileName: String, response: HttpServletResponse) {
