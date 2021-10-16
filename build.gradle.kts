@@ -32,6 +32,7 @@ dependencies {
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("io.projectreactor:reactor-test")
 	testImplementation("com.squareup.okhttp3:mockwebserver")
+	testImplementation("com.willowtreeapps.assertk:assertk-jvm:0.25")
 }
 
 tasks.withType<KotlinCompile> {
