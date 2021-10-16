@@ -6,19 +6,19 @@ import java.io.InputStream
 import java.io.OutputStream
 import javax.servlet.http.HttpServletResponse
 
-class FileServer(private val basePath: String) {
-    fun read(fileName: String): FileToServe {
-        return FileToServe(basePath, fileName)
+class LocalFileServer(private val basePath: String) {
+    fun read(fileName: String): LocalFileToServe {
+        return LocalFileToServe(basePath, fileName)
     }
 
     companion object {
-        fun from(basePath: String): FileServer {
-            return FileServer(basePath)
+        fun from(basePath: String): LocalFileServer {
+            return LocalFileServer(basePath)
         }
     }
 }
 
-class FileToServe(basePath: String, private val fileName: String) {
+class LocalFileToServe(basePath: String, private val fileName: String) {
     private val filePath = "$basePath/$fileName"
 
     fun byteArray(): ByteArray {

@@ -1,7 +1,7 @@
 package ar.com.flow.download.controller
 
 import ar.com.flow.download.AttachmentResponse
-import ar.com.flow.download.FileServer
+import ar.com.flow.download.LocalFileServer
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.core.io.InputStreamResource
@@ -21,7 +21,7 @@ class WebFluxFileController(
 ) {
     private val log = LoggerFactory.getLogger(WebFluxFileController::class.java)
 
-    private val fileServer = FileServer.from(basePath)
+    private val fileServer = LocalFileServer.from(basePath)
 
     /**
      * Returns a ResponseEntity with a byte array body.

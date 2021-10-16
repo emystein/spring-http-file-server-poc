@@ -18,7 +18,7 @@ class AttachmentResponse(fileName: String) {
 
     private val response = ResponseEntity.ok().header(CONTENT_DISPOSITION, contentDisposition.value)
 
-    fun body(fileToServe: FileToServe): ResponseEntity<ByteArray> {
+    fun body(fileToServe: LocalFileToServe): ResponseEntity<ByteArray> {
         return response.body(fileToServe.byteArray())
     }
 

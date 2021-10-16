@@ -1,10 +1,8 @@
 package ar.com.flow.download.controller
 
-import kong.unirest.Unirest
-import org.apache.commons.io.IOUtils
+import ar.com.flow.download.FileServerProxy
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Value
-import org.springframework.http.HttpHeaders
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping
@@ -18,18 +16,14 @@ class ServletForwardController(
 ) {
     private val log = LoggerFactory.getLogger(ServletFileController::class.java)
 
-    @GetMapping("/servlet-response/{fileName}")
-    fun unirestForwardToServletResponse(@PathVariable("fileName") fileName: String, response: HttpServletResponse) {
-        response.setHeader(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"${fileName}\"")
+    private val fileServer = FileServerProxy(remoteSourceUrl)
 
-        forwardDownload(fileName, response)
+    @GetMapping("/servlet-response/{fileName}")
+    fun forwardToServletResponse(@PathVariable("fileName") fileName: String, response: HttpServletResponse) {
+        val fileToDownload = fileServer.read(fileName)
+
+        fileToDownload.attachTo(response)
 
         log.info("Completed file: $fileName")
-    }
-
-    private fun forwardDownload(fileName: String, response: HttpServletResponse) {
-        Unirest.get("$remoteSourceUrl/$fileName").asObject { rawResponse ->
-            IOUtils.copyLarge(rawResponse.content, response.outputStream)
-        }
     }
 }
