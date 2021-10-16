@@ -8,8 +8,11 @@ import org.aspectj.lang.annotation.Pointcut
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Component
 
-@Aspect
 @Component
+@Aspect
+/**
+ * Uses @Before and @After instead of @Around because @Around makes the controllers to return empty files.
+ */
 class MemoryUsageLogger {
     private val log = LoggerFactory.getLogger(this.javaClass)
 

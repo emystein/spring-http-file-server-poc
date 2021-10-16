@@ -25,16 +25,11 @@ class ServletForwardController(
         forwardDownload(fileName, response)
 
         log.info("Completed file: $fileName")
-        log.trace("JVM used memory: ${usedMemoryInMB()} MB")
     }
 
     private fun forwardDownload(fileName: String, response: HttpServletResponse) {
         Unirest.get("$remoteSourceUrl/$fileName").asObject { rawResponse ->
             IOUtils.copyLarge(rawResponse.content, response.outputStream)
         }
-    }
-
-    private fun usedMemoryInMB(): Long {
-        return (Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory()) / (1024 * 1014)
     }
 }
