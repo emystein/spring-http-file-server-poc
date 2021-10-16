@@ -13,11 +13,11 @@ import javax.servlet.http.HttpServletResponse
 
 
 @RestController
-@RequestMapping("/servlet/file")
-class ServletFileController(
+@RequestMapping("/file")
+class LocalFileServerController(
     @Value("\${local.source.path}") private val basePath: String
 ) {
-    private val log = LoggerFactory.getLogger(ServletFileController::class.java)
+    private val log = LoggerFactory.getLogger(this.javaClass)
 
     private val fileServer = LocalFileServer.from(basePath)
 

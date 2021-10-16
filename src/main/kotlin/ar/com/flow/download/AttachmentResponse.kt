@@ -3,7 +3,6 @@ package ar.com.flow.download
 import org.springframework.http.ContentDisposition
 import org.springframework.http.HttpHeaders.CONTENT_DISPOSITION
 import org.springframework.http.ResponseEntity
-import reactor.core.publisher.Mono
 import java.io.InputStream
 import javax.servlet.http.HttpServletResponse
 
@@ -24,10 +23,6 @@ class AttachmentResponse(fileName: String) {
 
     fun body(inputStream: InputStream): ResponseEntity<InputStream> {
         return response.body(inputStream)
-    }
-
-    fun <T> body(mono: Mono<T>): ResponseEntity<Mono<T>> {
-        return response.body(mono)
     }
 }
 

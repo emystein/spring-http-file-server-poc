@@ -18,19 +18,13 @@ repositories {
 dependencies {
 	implementation("commons-io:commons-io:2.4")
 	implementation("org.springframework.boot:spring-boot-starter-web")
-	implementation("org.springframework.boot:spring-boot-starter-webflux")
 	implementation("org.aspectj:aspectjweaver")
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
-	implementation("io.projectreactor.kotlin:reactor-kotlin-extensions")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-	implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
 	implementation("com.konghq:unirest-java:3.13.0")
 
-	developmentOnly("org.springframework.boot:spring-boot-devtools")
-
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
-	testImplementation("io.projectreactor:reactor-test")
 	testImplementation("com.squareup.okhttp3:mockwebserver")
 	testImplementation("com.willowtreeapps.assertk:assertk-jvm:0.25")
 }

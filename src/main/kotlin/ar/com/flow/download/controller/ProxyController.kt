@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RestController
 import javax.servlet.http.HttpServletResponse
 
 @RestController
-@RequestMapping("/servlet/proxy")
-class ServletProxyController(
+@RequestMapping("/proxy")
+class ProxyController(
     @Value("\${remote.source.url}") private val remoteUrl: String
 ) {
     private val log = LoggerFactory.getLogger(this.javaClass)
