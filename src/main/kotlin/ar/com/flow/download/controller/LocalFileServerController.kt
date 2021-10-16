@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse
 
 
 @RestController
-@RequestMapping("/file")
+@RequestMapping("/files")
 class LocalFileServerController(
     @Value("\${local.source.path}") private val basePath: String
 ) {

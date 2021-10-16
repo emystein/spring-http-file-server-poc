@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse
 
 @RestController
 @RequestMapping("/proxy")
-class ProxyController(
+class FileServerProxyController(
     @Value("\${remote.source.url}") private val remoteUrl: String
 ) {
     private val log = LoggerFactory.getLogger(this.javaClass)

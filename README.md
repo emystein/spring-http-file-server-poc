@@ -45,12 +45,12 @@ then opening http://localhost:8000 in a web browser will list files found in the
 
 ## Download local files
 
-HTTP GET /servlet/files/bytearray/{fileName}
+HTTP GET /files/bytearray/{fileName}
 
-HTTP GET /servlet/files/servlet-response/{fileName}
+HTTP GET /files/servlet-response/{fileName}
 
 
 ## Download remote files
 
-HTTP GET /servlet/forward/servlet-response/{fileName}
+HTTP GET /proxy/servlet-response/{fileName}
 
