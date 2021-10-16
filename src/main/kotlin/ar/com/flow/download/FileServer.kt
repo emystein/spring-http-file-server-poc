@@ -1,6 +1,8 @@
 package ar.com.flow.download
 
 import org.apache.commons.io.IOUtils
+import org.aspectj.lang.annotation.Around
+import org.aspectj.lang.annotation.Aspect
 import org.slf4j.LoggerFactory
 import java.io.FileInputStream
 import java.io.InputStream
@@ -25,13 +27,10 @@ class FileToServe(basePath: String, private val fileName: String) {
     private val filePath = "$basePath/$fileName"
 
     fun byteArray(): ByteArray {
-        log.trace("JVM used memory: ${Memory.usedInMB()} MB")
         // here the whole file is stored in memory
-
         val byteArray = IOUtils.toByteArray(inputStream())
 
         log.trace("Loaded byte array of file: $filePath")
-        log.trace("JVM used memory: ${Memory.usedInMB()} MB")
 
         return byteArray
     }
@@ -41,12 +40,7 @@ class FileToServe(basePath: String, private val fileName: String) {
     }
 
     fun copyTo(outputStream: OutputStream) {
-        log.trace("JVM used memory: ${Memory.usedInMB()} MB")
-
         IOUtils.copyLarge(inputStream(), outputStream)
-
-        log.trace("Completed OutputStream of file: $filePath")
-        log.trace("JVM used memory: ${Memory.usedInMB()} MB")
     }
 
     fun attachTo(response: HttpServletResponse) {

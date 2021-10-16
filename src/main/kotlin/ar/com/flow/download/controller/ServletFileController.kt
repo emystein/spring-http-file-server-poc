@@ -1,5 +1,8 @@
-package ar.com.flow.download
+package ar.com.flow.download.controller
 
+import ar.com.flow.download.AttachmentResponse
+import ar.com.flow.download.FileServer
+import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
@@ -14,7 +17,9 @@ import javax.servlet.http.HttpServletResponse
 class ServletFileController(
     @Value("\${local.source.path}") private val basePath: String
 ) {
-    val fileServer = FileServer.from(basePath)
+    private val log = LoggerFactory.getLogger(ServletFileController::class.java)
+
+    private val fileServer = FileServer.from(basePath)
 
     /**
      * Returns a ResponseEntity with a byte array body.
@@ -24,6 +29,8 @@ class ServletFileController(
     @GetMapping("/bytearray/{fileName}")
     fun serveByteArray(@PathVariable("fileName") fileName: String): ResponseEntity<ByteArray> {
         val fileToServe = fileServer.read(fileName)
+
+        log.trace("Completed File: $fileName")
 
         return AttachmentResponse.fileName(fileName)
             .body(fileToServe)
@@ -37,6 +44,7 @@ class ServletFileController(
         val fileToServe = fileServer.read(fileName)
 
         fileToServe.attachTo(response)
-    }
 
+        log.trace("Completed File: $fileName")
+    }
 }
