@@ -30,7 +30,7 @@ class LocalFileServerControllerTest {
 
     @Test
     fun serveByteArray() {
-        val url = "http://localhost:$port/local/byte-array/hello_world.txt"
+        val url = "http://localhost:$port/local/response-entity/hello_world.txt"
         assertThat(restTemplate.getForObject(url, String::class.java)).contains("Hello, World")
     }
 

@@ -26,8 +26,8 @@ class LocalFileServerController(
      *
      * WARNING: stores the whole file in memory, therefore it might throw Java Heap Space exception.
      */
-    @GetMapping("/byte-array/{fileName}")
-    fun serveByteArray(@PathVariable("fileName") fileName: String): ResponseEntity<ByteArray> {
+    @GetMapping("/response-entity/{fileName}")
+    fun writeResponseEntity(@PathVariable("fileName") fileName: String): ResponseEntity<ByteArray> {
         val fileToServe = fileServer.read(fileName)
 
         log.trace("Completed File: $fileName")
@@ -41,7 +41,7 @@ class LocalFileServerController(
      * Writes input file to HttpServletResponse output stream.
      */
     @GetMapping("/servlet-response/{fileName}")
-    fun serveServletResponse(@PathVariable("fileName") fileName: String, servletResponse: HttpServletResponse) {
+    fun writeToServletResponse(@PathVariable("fileName") fileName: String, servletResponse: HttpServletResponse) {
         val fileToServe = fileServer.read(fileName)
 
         fileToServe.attachTo(servletResponse)

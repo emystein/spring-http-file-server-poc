@@ -45,7 +45,7 @@ then opening http://localhost:8000 in a web browser will list files found in the
 
 ## Download local files
 
-HTTP GET /local/byte-array/{fileName}
+HTTP GET /local/response-entity/{fileName}
 
 HTTP GET /local/servlet-response/{fileName}
 
