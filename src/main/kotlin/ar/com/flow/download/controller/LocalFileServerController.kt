@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse
 
 
 @RestController
-@RequestMapping("/files")
+@RequestMapping("/local")
 class LocalFileServerController(
     @Value("\${local.source.path}") private val basePath: String
 ) {
@@ -26,7 +26,7 @@ class LocalFileServerController(
      *
      * WARNING: stores the whole file in memory, therefore it might throw Java Heap Space exception.
      */
-    @GetMapping("/bytearray/{fileName}")
+    @GetMapping("/byte-array/{fileName}")
     fun serveByteArray(@PathVariable("fileName") fileName: String): ResponseEntity<ByteArray> {
         val fileToServe = fileServer.read(fileName)
 

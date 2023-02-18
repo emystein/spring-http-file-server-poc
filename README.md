@@ -2,8 +2,8 @@
 
 The application provides HTTP endpoints for downloading files:
 
-* from the local machine
-* forwarded from another HTTP server
+* from the local server
+* from a remote HTTP server
 
 
 # Requirements
@@ -45,9 +45,9 @@ then opening http://localhost:8000 in a web browser will list files found in the
 
 ## Download local files
 
-HTTP GET /files/bytearray/{fileName}
+HTTP GET /local/byte-array/{fileName}
 
-HTTP GET /files/servlet-response/{fileName}
+HTTP GET /local/servlet-response/{fileName}
 
 
 ## Download remote files
