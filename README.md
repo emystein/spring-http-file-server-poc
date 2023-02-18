@@ -1,9 +1,9 @@
 # Introduction
 
-The application provides HTTP endpoints for downloading files:
+This application provides HTTP endpoints for downloading files from:
 
-* from the local server
-* from a remote HTTP server
+* The machine running the application
+* A remote HTTP server
 
 
 # Requirements
@@ -14,43 +14,53 @@ The application provides HTTP endpoints for downloading files:
 
 # Configuration
 
-In `src/main/resources/application.properties`:
+The configuration file is `src/main/resources/application.properties`
 
+## Parameters
+
+Local directory which files are exposed for download:
 ```
 local.source.path=${HOME}/Documents
+```
+
+Proxied HTTP File Server:
+```
 remote.source.url=http://localhost:8000
 ```
 
+
 # Run
+
+## This application
 
 ```bash
 gradle bootRun
 ```
 
-## Local HTTP Server
+## Demo remote HTTP File Server
 
-Python provides an HTTP server for files in the start directory.
+Python provides an HTTP server that serves files from the directory where the server is started from.
 
-For example, when execute:
+The following example starts a server and gives access to files under the /tmp directory:
 
 ```bash
 cd /tmp
 python -m http.server
 ```
 
-then opening http://localhost:8000 in a web browser will list files found in the `/tmp` directory.
+Then opening http://localhost:8000 in a web browser will list the `/tmp` directory.
 
 
 # API
 
-## Download local files
+## Download files from the machine running the application
 
 HTTP GET /local/response-entity/{fileName}
 
 HTTP GET /local/servlet-response/{fileName}
 
 
-## Download remote files
+## Download files from a proxied server
 
 HTTP GET /proxy/servlet-response/{fileName}
 
