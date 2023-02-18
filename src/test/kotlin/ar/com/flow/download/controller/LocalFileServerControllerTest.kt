@@ -1,6 +1,5 @@
 package ar.com.flow.download.controller
 
-import org.apache.commons.io.FileUtils
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
@@ -26,7 +25,7 @@ class LocalFileServerControllerTest {
 
     @BeforeEach
     fun setUp() {
-        FileUtils.copyFile(File("src/test/resources/hello_world.txt"), File("$localServerDirectory/hello_world.txt"))
+        File("src/test/resources/hello_world.txt").copyTo(File("$localServerDirectory/hello_world.txt"), overwrite = true)
     }
 
     @Test
