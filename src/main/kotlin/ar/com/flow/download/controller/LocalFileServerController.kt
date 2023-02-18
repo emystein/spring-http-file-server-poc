@@ -19,7 +19,7 @@ class LocalFileServerController(
 ) {
     private val log = LoggerFactory.getLogger(this.javaClass)
 
-    private val fileServer = LocalFileServer.from(basePath)
+    private val fileServer = LocalFileServer.withBasePath(basePath)
 
     /**
      * Returns a ResponseEntity with a byte array body.

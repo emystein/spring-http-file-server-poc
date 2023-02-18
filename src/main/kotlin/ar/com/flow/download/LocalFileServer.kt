@@ -12,7 +12,7 @@ class LocalFileServer(private val basePath: String) {
     }
 
     companion object {
-        fun from(basePath: String): LocalFileServer {
+        fun withBasePath(basePath: String): LocalFileServer {
             return LocalFileServer(basePath)
         }
     }
