@@ -12,7 +12,7 @@ import org.springframework.test.context.ActiveProfiles
 import java.io.File
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
-@ActiveProfiles("test")
+@ActiveProfiles("test") // Reads src/test/resources/application-test.properties
 class LocalFileServerControllerTest {
     @Value(value = "\${local.server.port}")
     private var port = 0
@@ -29,9 +29,14 @@ class LocalFileServerControllerTest {
     }
 
     @Test
-    @Throws(Exception::class)
     fun serveByteArray() {
         val url = "http://localhost:$port/files/bytearray/hello_world.txt"
+        assertThat(restTemplate.getForObject(url, String::class.java)).contains("Hello, World")
+    }
+
+    @Test
+    fun serveServletResponse() {
+        val url = "http://localhost:$port/files/servlet-response/hello_world.txt"
         assertThat(restTemplate.getForObject(url, String::class.java)).contains("Hello, World")
     }
 }

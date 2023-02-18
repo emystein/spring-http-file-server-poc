@@ -54,3 +54,7 @@ HTTP GET /files/servlet-response/{fileName}
 
 HTTP GET /proxy/servlet-response/{fileName}
 
+
+# See Also
+
+https://spring.io/guides/gs/testing-web/
