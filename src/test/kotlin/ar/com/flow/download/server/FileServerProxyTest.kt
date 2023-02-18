@@ -1,4 +1,4 @@
-package ar.com.flow.download
+package ar.com.flow.download.server
 
 import assertk.assertThat
 import org.junit.jupiter.api.BeforeEach

@@ -1,5 +1,6 @@
-package ar.com.flow.download
+package ar.com.flow.download.server
 
+import ar.com.flow.download.AttachmentContentDisposition
 import kong.unirest.Unirest
 import org.apache.commons.io.IOUtils
 import javax.servlet.http.HttpServletResponse

@@ -1,7 +1,7 @@
 package ar.com.flow.download.controller
 
 import ar.com.flow.download.AttachmentResponse
-import ar.com.flow.download.LocalFileServer
+import ar.com.flow.download.server.LocalFileServer
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.http.ResponseEntity
@@ -32,7 +32,8 @@ class LocalFileServerController(
 
         log.trace("Completed File: $fileName")
 
-        return AttachmentResponse.fileName(fileName)
+        return AttachmentResponse
+            .fileName(fileName)
             .body(fileToServe)
     }
 
@@ -40,10 +41,10 @@ class LocalFileServerController(
      * Writes input file to HttpServletResponse output stream.
      */
     @GetMapping("/servlet-response/{fileName}")
-    fun serveServletResponse(@PathVariable("fileName") fileName: String, response: HttpServletResponse) {
+    fun serveServletResponse(@PathVariable("fileName") fileName: String, servletResponse: HttpServletResponse) {
         val fileToServe = fileServer.read(fileName)
 
-        fileToServe.attachTo(response)
+        fileToServe.attachTo(servletResponse)
 
         log.trace("Completed File: $fileName")
     }

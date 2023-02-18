@@ -1,4 +1,4 @@
-package ar.com.flow.download
+package ar.com.flow.download.server
 
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer

@@ -1,6 +1,9 @@
-package ar.com.flow.download
+package ar.com.flow.download.server
 
+import ar.com.flow.download.AttachmentContentDisposition
+import ar.com.flow.download.AttachmentResponse
 import org.apache.commons.io.IOUtils
+import org.springframework.http.ResponseEntity
 import java.io.FileInputStream
 import java.io.InputStream
 import java.io.OutputStream

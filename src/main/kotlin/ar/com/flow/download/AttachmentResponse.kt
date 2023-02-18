@@ -1,5 +1,6 @@
 package ar.com.flow.download
 
+import ar.com.flow.download.server.LocalFileToServe
 import org.springframework.http.ContentDisposition
 import org.springframework.http.HttpHeaders.CONTENT_DISPOSITION
 import org.springframework.http.ResponseEntity
