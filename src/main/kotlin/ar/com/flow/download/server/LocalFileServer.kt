@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity
 import java.io.FileInputStream
 import java.io.InputStream
 import java.io.OutputStream
-import javax.servlet.http.HttpServletResponse
+import jakarta.servlet.http.HttpServletResponse
 
 class LocalFileServer(private val basePath: String) {
     fun read(fileName: String): LocalFileToServe {

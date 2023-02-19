@@ -5,7 +5,7 @@ import org.springframework.http.ContentDisposition
 import org.springframework.http.HttpHeaders.CONTENT_DISPOSITION
 import org.springframework.http.ResponseEntity
 import java.io.InputStream
-import javax.servlet.http.HttpServletResponse
+import jakarta.servlet.http.HttpServletResponse
 
 class AttachmentResponse(fileName: String) {
     companion object {

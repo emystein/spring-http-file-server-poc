@@ -1,22 +1,21 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-	id("org.springframework.boot") version "2.5.5"
-	id("io.spring.dependency-management") version "1.0.11.RELEASE"
-	kotlin("jvm") version "1.5.31"
-	kotlin("plugin.spring") version "1.5.31"
+	id("org.springframework.boot") version "3.0.2"
+	id("io.spring.dependency-management") version "1.1.0"
+	kotlin("jvm") version "1.7.22"
+	kotlin("plugin.spring") version "1.7.22"
 }
 
 group = "com.veritran"
 version = "0.0.1-SNAPSHOT"
-java.sourceCompatibility = JavaVersion.VERSION_11
 
 repositories {
 	mavenCentral()
 }
 
 dependencies {
-	implementation("commons-io:commons-io:2.4")
+	implementation("commons-io:commons-io:2.7")
 	implementation("org.springframework.boot:spring-boot-starter-web")
 	implementation("org.aspectj:aspectjweaver")
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
@@ -32,7 +31,7 @@ dependencies {
 tasks.withType<KotlinCompile> {
 	kotlinOptions {
 		freeCompilerArgs = listOf("-Xjsr305=strict")
-		jvmTarget = "11"
+		jvmTarget = "17"
 	}
 }
 
