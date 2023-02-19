@@ -21,7 +21,7 @@ class FileServerProxyTest {
 
         mockRemoteServer.enqueueContent(downloadedContent)
 
-        val fileToServe = proxy.read("vtnet.log")
+        val fileToServe = proxy.read("app.log")
         val response = MockHttpServletResponse()
         fileToServe.attachTo(response)
 

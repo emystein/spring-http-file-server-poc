@@ -19,10 +19,10 @@ class FileServerProxyController(
     private val fileServer = FileServerProxy(remoteUrl)
 
     @GetMapping("/servlet-response/{fileName}")
-    fun writeToServletResponse(@PathVariable("fileName") fileName: String, response: HttpServletResponse) {
+    fun writeToServletResponse(@PathVariable("fileName") fileName: String, servletResponse: HttpServletResponse) {
         val fileToDownload = fileServer.read(fileName)
 
-        fileToDownload.attachTo(response)
+        fileToDownload.attachTo(servletResponse)
 
         log.info("Completed file: $fileName")
     }
