@@ -7,7 +7,7 @@ plugins {
 	kotlin("plugin.spring") version "1.7.22"
 }
 
-group = "com.veritran"
+group = "ar.com.flow"
 version = "0.0.1-SNAPSHOT"
 
 repositories {
